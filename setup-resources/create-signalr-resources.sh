@@ -19,7 +19,7 @@ SUBSCRIPTION_NAME=$(az account show --query 'name' -o tsv)
 
 
 # Set the SignalR service name
-SIGNALR_SERVICE_NAME="msl-sigr-signalr$(openssl rand -hex 5)"
+SIGNALR_SERVICE_NAME="signalrstock893423"
 
 printf "Subscription Name: ""$SUBSCRIPTION_NAME"" \n"
 printf "SignalR Service Name: $SIGNALR_SERVICE_NAME\n"
