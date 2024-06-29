@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'start/server' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '20.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
   PACKAGE_PATH: 'start/server'
 
@@ -36,13 +36,13 @@ jobs:
           popd
 
       - name: Zip artifact for deployment
-        run: zip ./${{ env.PACKAGE_PATH }}/release.zip ./${{ env.PACKAGE_PATH }}/* -r
+        run: zip release.zip ./${{ env.PACKAGE_PATH }}/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: ./${{ env.PACKAGE_PATH }}/release.zip
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
