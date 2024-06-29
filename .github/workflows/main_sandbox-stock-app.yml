@@ -36,7 +36,10 @@ jobs:
           popd
 
       - name: Zip artifact for deployment
-        run: zip ../release.zip ./${{ env.PACKAGE_PATH }}/* -r
+        run: |
+          cd ${{ env.PACKAGE_PATH }}
+          zip release.zip ./* -r
+        mv release.zip ../..
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
