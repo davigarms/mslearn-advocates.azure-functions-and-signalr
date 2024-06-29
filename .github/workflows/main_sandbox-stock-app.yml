@@ -36,13 +36,13 @@ jobs:
           popd
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./${{ env.PACKAGE_PATH }}/* -r
+        run: zip ./${{ env.PACKAGE_PATH }}/release.zip ./${{ env.PACKAGE_PATH }}/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          path: ./${{ env.PACKAGE_PATH }}/release.zip
 
   deploy:
     runs-on: ubuntu-latest
